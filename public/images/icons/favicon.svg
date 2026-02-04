@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heartGradientFavicon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F97316;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bgGradientFavicon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="16" cy="16" r="16" fill="url(#bgGradientFavicon)"/>
+  
+  <!-- Heart Icon -->
+  <g transform="translate(16, 16)">
+    <path d="M8 4C8 2 6 0 4 0C2.5 0 1.2 0.8 0.5 2C-0.2 0.8 -1.5 0 -3 0C-5 0 -7 2 -7 4C-7 7 0.5 14 0.5 14S8 7 8 4Z" 
+          fill="url(#heartGradientFavicon)" 
+          transform="scale(0.8) translate(0, -2)"/>
+  </g>
+</svg>
