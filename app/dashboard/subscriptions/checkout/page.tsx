@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { 
-  CreditCard, Shield, Lock, Check, 
+import {
+  CreditCard, Shield, Lock, Check,
   ArrowLeft, ArrowRight, Star, Crown,
   AlertCircle, Sparkles
 } from 'lucide-react'
@@ -19,10 +19,10 @@ import { searchApi } from '@/lib/search-api'
 export default function CheckoutPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  
+
   const planId = searchParams.get('plan') || 'golden'
   const billingCycle = (searchParams.get('billing') as 'monthly' | 'yearly') || 'monthly'
-  
+
   const [currentStep, setCurrentStep] = useState(1)
   const [isProcessing, setIsProcessing] = useState(false)
   const [paymentData, setPaymentData] = useState({
@@ -101,14 +101,14 @@ export default function CheckoutPage() {
   const validateStep = (step: number) => {
     switch (step) {
       case 1:
-        return paymentData.cardNumber.length >= 15 && 
-               paymentData.expiryDate.length === 5 && 
-               paymentData.cvv.length >= 3 && 
-               paymentData.cardholderName.length > 0
+        return paymentData.cardNumber.length >= 15 &&
+          paymentData.expiryDate.length === 5 &&
+          paymentData.cvv.length >= 3 &&
+          paymentData.cardholderName.length > 0
       case 2:
-        return paymentData.email.includes('@') && 
-               paymentData.billingAddress.street.length > 0 && 
-               paymentData.billingAddress.city.length > 0
+        return paymentData.email.includes('@') &&
+          paymentData.billingAddress.street.length > 0 &&
+          paymentData.billingAddress.city.length > 0
       default:
         return true
     }
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
     setIsProcessing(true)
     try {
       const result = await searchApi.processSubscription(planId, billingCycle, paymentData)
-      
+
       if (result.success) {
         // Trigger confetti
         confetti({
@@ -126,7 +126,7 @@ export default function CheckoutPage() {
           spread: 70,
           origin: { y: 0.6 }
         })
-        
+
         toast.success('Payment successful! Welcome to premium!')
         setCurrentStep(3)
       }
@@ -142,17 +142,15 @@ export default function CheckoutPage() {
     <div className="flex items-center justify-center mb-8">
       {[1, 2, 3].map((step) => (
         <div key={step} className="flex items-center">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-            step <= currentStep 
-              ? 'bg-primary-500 text-white' 
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${step <= currentStep
+              ? 'bg-primary-500 text-white'
               : 'bg-gray-200 text-gray-600'
-          }`}>
+            }`}>
             {step < currentStep ? <Check className="h-5 w-5" /> : step}
           </div>
           {step < 3 && (
-            <div className={`w-16 h-1 mx-2 ${
-              step < currentStep ? 'bg-primary-500' : 'bg-gray-200'
-            }`} />
+            <div className={`w-16 h-1 mx-2 ${step < currentStep ? 'bg-primary-500' : 'bg-gray-200'
+              }`} />
           )}
         </div>
       ))}
@@ -173,6 +171,7 @@ export default function CheckoutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
+            {/* @ts-ignore */}
             <AnimatePresence mode="wait">
               {/* Step 1: Payment Details */}
               {currentStep === 1 && (
@@ -386,7 +385,7 @@ export default function CheckoutPage() {
                     >
                       Back
                     </Button>
-                    
+
                     <Button
                       onClick={processPayment}
                       disabled={!validateStep(2)}
@@ -419,7 +418,7 @@ export default function CheckoutPage() {
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     Payment Successful! 🎉
                   </h2>
-                  
+
                   <p className="text-gray-600 mb-8">
                     Welcome to {selectedPlan.name}! Your premium features are now active.
                   </p>
@@ -449,7 +448,7 @@ export default function CheckoutPage() {
                     >
                       Go to Dashboard
                     </Button>
-                    
+
                     <Button
                       onClick={() => router.push('/dashboard/search')}
                       variant="secondary"
@@ -486,14 +485,14 @@ export default function CheckoutPage() {
                   </span>
                   <span className="font-semibold">${price}</span>
                 </div>
-                
+
                 {billingCycle === 'yearly' && savings > 0 && (
                   <div className="flex justify-between text-green-600">
                     <span>Yearly Savings</span>
                     <span>-${savings}</span>
                   </div>
                 )}
-                
+
                 <div className="border-t pt-3">
                   <div className="flex justify-between font-bold text-lg">
                     <span>Total</span>

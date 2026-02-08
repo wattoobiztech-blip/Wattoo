@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
-import { 
-  Heart, X, Clock, Star, Sparkles, 
+import {
+  Heart, X, Clock, Star, Sparkles,
   RefreshCw, Settings, TrendingUp, Users,
   MapPin, GraduationCap, Briefcase, Calendar
 } from 'lucide-react'
@@ -58,7 +58,7 @@ export default function MatchesPage() {
     if (currentMatchIndex >= dailyMatches.length) return
 
     const currentMatch = dailyMatches[currentMatchIndex]
-    
+
     // Update local state
     setMatchActions(prev => ({
       ...prev,
@@ -110,12 +110,12 @@ export default function MatchesPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Matches</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-white mb-2">Daily Matches</h1>
+            <p className="text-gray-300">
               Curated profiles based on your preferences and compatibility
             </p>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button
               onClick={refreshMatches}
@@ -125,7 +125,7 @@ export default function MatchesPage() {
             >
               Refresh
             </Button>
-            
+
             <Link href="/dashboard/matches/preferences">
               <Button variant="outline" icon={Settings}>
                 Preferences
@@ -137,19 +137,19 @@ export default function MatchesPage() {
         {/* Match Progress */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-gray-300">
               Match {Math.min(currentMatchIndex + 1, dailyMatches.length)} of {dailyMatches.length}
             </span>
             <span className="text-sm text-gray-500">
               {dailyMatches.length - currentMatchIndex} remaining
             </span>
           </div>
-          
-          <div className="w-full bg-gray-200 rounded-full h-2">
+
+          <div className="w-full bg-white/20 rounded-full h-2">
             <motion.div
               initial={{ width: 0 }}
-              animate={{ 
-                width: `${((currentMatchIndex) / dailyMatches.length) * 100}%` 
+              animate={{
+                width: `${((currentMatchIndex) / dailyMatches.length) * 100}%`
               }}
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-r from-primary-500 to-purple-500 h-2 rounded-full"
@@ -161,6 +161,7 @@ export default function MatchesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Match Card */}
             <div className="lg:col-span-2">
+              {/* @ts-ignore */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentMatch.profile.id}
@@ -168,7 +169,7 @@ export default function MatchesPage() {
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                   exit={{ opacity: 0, scale: 0.9, rotateY: 10 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100"
+                  className="glass rounded-3xl shadow-2xl overflow-hidden border border-white/10"
                 >
                   {/* Profile Image */}
                   <div className="relative h-96 overflow-hidden">
@@ -178,10 +179,10 @@ export default function MatchesPage() {
                       fill
                       className="object-cover"
                     />
-                    
+
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    
+
                     {/* Compatibility Badge */}
                     <div className="absolute top-6 left-6">
                       <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
@@ -223,29 +224,29 @@ export default function MatchesPage() {
                   <div className="p-8">
                     {/* Quick Stats */}
                     <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center p-4 bg-gray-50 rounded-xl">
-                        <Calendar className="h-6 w-6 text-gray-600 mx-auto mb-2" />
-                        <div className="font-semibold text-gray-900">{currentMatch.profile.age}</div>
+                      <div className="text-center p-4 bg-white/5 rounded-xl">
+                        <Calendar className="h-6 w-6 text-gray-300 mx-auto mb-2" />
+                        <div className="font-semibold text-white">{currentMatch.profile.age}</div>
                         <div className="text-sm text-gray-600">Years</div>
                       </div>
-                      
+
                       <div className="text-center p-4 bg-gray-50 rounded-xl">
                         <GraduationCap className="h-6 w-6 text-gray-600 mx-auto mb-2" />
-                        <div className="font-semibold text-gray-900 text-sm">{currentMatch.profile.education}</div>
+                        <div className="font-semibold text-white text-sm">{currentMatch.profile.education}</div>
                         <div className="text-sm text-gray-600">Education</div>
                       </div>
-                      
+
                       <div className="text-center p-4 bg-gray-50 rounded-xl">
                         <Users className="h-6 w-6 text-gray-600 mx-auto mb-2" />
-                        <div className="font-semibold text-gray-900">{currentMatch.profile.religion}</div>
+                        <div className="font-semibold text-white">{currentMatch.profile.religion}</div>
                         <div className="text-sm text-gray-600">Religion</div>
                       </div>
                     </div>
 
                     {/* About */}
                     <div className="mb-6">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3">About</h3>
-                      <p className="text-gray-700 leading-relaxed">
+                      <h3 className="text-lg font-semibold text-white mb-3">About</h3>
+                      <p className="text-gray-300 leading-relaxed">
                         {currentMatch.profile.aboutMe}
                       </p>
                     </div>
@@ -256,20 +257,20 @@ export default function MatchesPage() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleMatchAction('passed')}
-                        className="w-16 h-16 bg-gray-100 hover:bg-red-100 text-gray-600 hover:text-red-600 rounded-full flex items-center justify-center transition-colors duration-200"
+                        className="w-16 h-16 bg-white/10 hover:bg-red-500/20 text-gray-300 hover:text-red-400 rounded-full flex items-center justify-center transition-colors duration-200"
                       >
                         <X className="h-8 w-8" />
                       </motion.button>
-                      
+
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleMatchAction('maybe')}
-                        className="w-16 h-16 bg-gray-100 hover:bg-yellow-100 text-gray-600 hover:text-yellow-600 rounded-full flex items-center justify-center transition-colors duration-200"
+                        className="w-16 h-16 bg-white/10 hover:bg-yellow-500/20 text-gray-300 hover:text-yellow-400 rounded-full flex items-center justify-center transition-colors duration-200"
                       >
                         <Clock className="h-8 w-8" />
                       </motion.button>
-                      
+
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -293,12 +294,12 @@ export default function MatchesPage() {
             {/* Match Insights */}
             <div className="space-y-6">
               {/* Compatibility Breakdown */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <div className="glass rounded-2xl p-6 shadow-sm border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                   <TrendingUp className="h-5 w-5 mr-2 text-primary-600" />
                   Compatibility Score
                 </h3>
-                
+
                 <div className="space-y-4">
                   {[
                     { label: 'Religious Match', score: 95, color: 'bg-green-500' },
@@ -309,10 +310,10 @@ export default function MatchesPage() {
                   ].map((item, index) => (
                     <div key={index}>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-700">{item.label}</span>
+                        <span className="text-gray-300">{item.label}</span>
                         <span className="font-semibold">{item.score}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-white/20 rounded-full h-2">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${item.score}%` }}
@@ -326,12 +327,12 @@ export default function MatchesPage() {
               </div>
 
               {/* Why This Match */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <div className="glass rounded-2xl p-6 shadow-sm border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                   <Sparkles className="h-5 w-5 mr-2 text-primary-600" />
                   Why This Match?
                 </h3>
-                
+
                 <div className="space-y-3">
                   {currentMatch.reasons.map((reason, index) => (
                     <motion.div
@@ -342,18 +343,18 @@ export default function MatchesPage() {
                       className="flex items-start space-x-3"
                     >
                       <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{reason}</span>
+                      <span className="text-gray-300 text-sm">{reason}</span>
                     </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* Common Interests */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="glass rounded-2xl p-6 shadow-sm border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-4">
                   Common Interests
                 </h3>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {currentMatch.commonInterests.map((interest, index) => (
                     <motion.span
@@ -361,7 +362,7 @@ export default function MatchesPage() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
-                      className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm font-medium"
                     >
                       {interest}
                     </motion.span>
@@ -381,15 +382,15 @@ export default function MatchesPage() {
               <div className="w-24 h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Heart className="h-12 w-12 text-white" />
               </div>
-              
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+
+              <h2 className="text-2xl font-bold text-white mb-4">
                 You've seen all matches for today!
               </h2>
-              
-              <p className="text-gray-600 mb-8">
+
+              <p className="text-gray-300 mb-8">
                 Come back tomorrow for fresh matches, or explore more profiles in search.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   onClick={refreshMatches}
@@ -399,7 +400,7 @@ export default function MatchesPage() {
                 >
                   Get New Matches
                 </Button>
-                
+
                 <Link href="/dashboard/search">
                   <Button variant="secondary">
                     Browse All Profiles

@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
-import CallActionSection from '@/components/CallActionSection'
 import SearchSection from '@/components/SearchSection'
 import FeaturesSection from '@/components/FeaturesSection'
 import ProfileShowcase from '@/components/ProfileShowcase'
@@ -16,10 +15,9 @@ export default function Home() {
       <CustomCursor />
       <Header />
       <HeroSection />
-      <CallActionSection />
       <SearchSection />
-      <FeaturesSection />
       <ProfileShowcase />
+      <FeaturesSection />
       <Footer />
     </main>
   )

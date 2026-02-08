@@ -3,16 +3,15 @@ import { Montserrat } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-montserrat',
   display: 'swap',
-  fallback: ['system-ui', 'arial']
 })
 
 export const metadata: Metadata = {
-  title: 'Rishta.com - Find Your Perfect Match',
-  description: 'AI-powered matrimonial platform with 99% success rate. Find your soulmate today!',
+  title: 'Rishta.com - Pakistan\'s #1 Trusted Matrimonial App',
+  description: 'Pakistan\'s leading AI-powered matrimonial platform with 99% success rate. Find your soulmate in Karachi, Lahore, Islamabad, and across Pakistan.',
   icons: {
     icon: '/images/icons/favicon.svg',
     shortcut: '/images/icons/favicon.svg',

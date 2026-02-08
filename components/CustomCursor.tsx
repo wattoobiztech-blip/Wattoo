@@ -60,7 +60,7 @@ export default function CustomCursor() {
         {trailPositions.map((pos, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-pink-400/20 to-purple-400/20 blur-sm cursor-trail"
+            className="absolute rounded-full bg-gradient-to-r from-teal-400/20 to-emerald-400/20 blur-sm cursor-trail"
             style={{
               left: pos.x,
               top: pos.y,

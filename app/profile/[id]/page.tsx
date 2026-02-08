@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
-import { 
-  ArrowLeft, Heart, MessageCircle, Share2, Flag, Star, MapPin, 
-  Briefcase, GraduationCap, Calendar, Users, Phone, Mail, 
+import {
+  ArrowLeft, Heart, MessageCircle, Share2, Flag, Star, MapPin,
+  Briefcase, GraduationCap, Calendar, Users, Phone, Mail,
   Camera, Shield, Crown, Eye, ChevronLeft, ChevronRight, X,
   Instagram, Facebook, Twitter, Linkedin, Globe, Music,
   Book, Dumbbell, Plane, Coffee, Award, Target
@@ -47,10 +47,10 @@ const getProfileData = (id: string) => ({
   rating: 4.9,
   responseRate: '95%',
   responseTime: 'Within 2 hours',
-  
+
   // Detailed Information
   about: 'I am a passionate software engineer who loves creating innovative solutions. I believe in living life to the fullest while maintaining strong family values. Looking for a life partner who shares similar interests and values.',
-  
+
   familyInfo: {
     fatherOccupation: 'Business Owner',
     motherOccupation: 'Teacher',
@@ -59,7 +59,7 @@ const getProfileData = (id: string) => ({
     familyValues: 'Traditional with modern outlook',
     familyIncome: '₹15-20 Lakhs'
   },
-  
+
   lifestyle: {
     diet: 'Vegetarian',
     drinking: 'Never',
@@ -67,12 +67,12 @@ const getProfileData = (id: string) => ({
     exercise: 'Regular',
     pets: 'Love pets'
   },
-  
+
   interests: [
-    'Reading', 'Traveling', 'Cooking', 'Photography', 
+    'Reading', 'Traveling', 'Cooking', 'Photography',
     'Music', 'Dancing', 'Fitness', 'Technology'
   ],
-  
+
   preferences: {
     ageRange: '26-32',
     heightRange: '5\'6" - 6\'2"',
@@ -81,19 +81,19 @@ const getProfileData = (id: string) => ({
     location: 'Pakistan',
     maritalStatus: 'Never Married'
   },
-  
+
   socialMedia: {
     instagram: '@ayesha_khan',
     facebook: 'ayesha.khan.dev',
     linkedin: 'ayesha-khan-dev'
   },
-  
+
   achievements: [
     'Employee of the Year 2023',
     'Published Research Paper',
     'Volunteer at NGO'
   ],
-  
+
   // Additional features
   compatibilityScore: 92,
   matchPercentage: 87,
@@ -132,7 +132,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30">
       {/* Main Header */}
       <Header />
-      
+
       {/* Page Header */}
       <div className="bg-white/80 backdrop-blur-xl border-b border-white/50 mt-[70px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -144,12 +144,12 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back</span>
             </button>
-            
+
             <div className="flex items-center space-x-4">
               <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all">
                 <Share2 className="w-5 h-5" />
               </button>
-              <button 
+              <button
                 onClick={() => setShowReportModal(true)}
                 className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-full transition-all"
               >
@@ -162,10 +162,10 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
+
           {/* Left Column - Profile Images & Quick Info */}
           <div className="lg:col-span-1 space-y-6">
-            
+
             {/* Image Gallery */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                   className="object-cover"
                   priority
                 />
-                
+
                 {/* Image Navigation */}
                 {profile.images.length > 1 && (
                   <>
@@ -210,7 +210,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="flex flex-col space-y-2">
                     {profile.premium && (
                       <div className="flex items-center space-x-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
@@ -218,7 +218,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                         <span>Premium</span>
                       </div>
                     )}
-                    
+
                     {profile.verified && (
                       <div className="flex items-center space-x-1 bg-blue-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
                         <Shield className="h-3 w-3" />
@@ -235,9 +235,8 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                          }`}
                       />
                     ))}
                   </div>
@@ -272,11 +271,10 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
             >
               <button
                 onClick={() => setIsLiked(!isLiked)}
-                className={`w-full flex items-center justify-center space-x-3 py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 ${
-                  isLiked
+                className={`w-full flex items-center justify-center space-x-3 py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 ${isLiked
                     ? 'bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg'
                     : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-pink-50'
-                }`}
+                  }`}
               >
                 <Heart className={`w-6 h-6 ${isLiked ? 'fill-current' : ''}`} />
                 <span>{isLiked ? 'Liked' : 'Like Profile'}</span>
@@ -291,13 +289,12 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               </button>
 
               <div className="grid grid-cols-2 gap-3">
-                <button 
+                <button
                   onClick={() => setIsFollowing(!isFollowing)}
-                  className={`flex items-center justify-center space-x-2 py-3 px-4 rounded-xl transition-all ${
-                    isFollowing 
-                      ? 'bg-green-500 text-white' 
+                  className={`flex items-center justify-center space-x-2 py-3 px-4 rounded-xl transition-all ${isFollowing
+                      ? 'bg-green-500 text-white'
                       : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-green-50'
-                  }`}
+                    }`}
                 >
                   <Star className={`w-5 h-5 ${isFollowing ? 'fill-current' : ''}`} />
                   <span>{isFollowing ? 'Following' : 'Follow'}</span>
@@ -345,7 +342,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg border border-white/50"
             >
               <h3 className="text-lg font-bold text-gray-900 mb-4">Compatibility</h3>
-              
+
               {/* Match Percentage */}
               <div className="mb-4">
                 <div className="flex justify-between items-center mb-2">
@@ -387,7 +384,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
 
           {/* Right Column - Detailed Information */}
           <div className="lg:col-span-2 space-y-6">
-            
+
             {/* Profile Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -412,7 +409,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="text-right">
                   <div className="text-sm text-gray-500">Last seen</div>
                   <div className="font-semibold text-gray-700">{profile.lastSeen}</div>
@@ -444,11 +441,10 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
-                      activeTab === tab.id
+                    className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab.id
                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
                         : 'text-gray-600 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     <tab.icon className="w-5 h-5" />
                     <span>{tab.label}</span>
@@ -458,6 +454,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
             </motion.div>
 
             {/* Tab Content */}
+            {/* @ts-ignore */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -549,7 +546,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                 {activeTab === 'family' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Family Information</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-4">
                         <div className="flex justify-between">
@@ -586,7 +583,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                 {activeTab === 'lifestyle' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Lifestyle & Habits</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-4">
                         <div className="flex justify-between">
@@ -631,7 +628,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                 {activeTab === 'preferences' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Partner Preferences</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-4">
                         <div className="flex justify-between">
@@ -668,7 +665,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                 {activeTab === 'gallery' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Photo Gallery</h3>
-                    
+
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {profile.images.map((image, index) => (
                         <motion.div
@@ -762,24 +759,24 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact {profile.name}</h3>
-              
+
               <div className="space-y-4">
                 <button className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-purple-500 hover:to-pink-500 transition-all">
                   <MessageCircle className="w-5 h-5" />
                   <span>Send Message</span>
                 </button>
-                
+
                 <button className="w-full flex items-center justify-center space-x-3 bg-green-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-green-500 transition-all">
                   <Phone className="w-5 h-5" />
                   <span>Request Phone Number</span>
                 </button>
-                
+
                 <button className="w-full flex items-center justify-center space-x-3 bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-500 transition-all">
                   <Mail className="w-5 h-5" />
                   <span>Send Email</span>
                 </button>
               </div>
-              
+
               <button
                 onClick={() => setShowContactModal(false)}
                 className="w-full mt-4 py-3 text-gray-600 hover:text-gray-800 transition-colors"
@@ -877,7 +874,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Report Profile</h3>
-              
+
               <div className="space-y-3">
                 {['Fake Profile', 'Inappropriate Content', 'Harassment', 'Spam', 'Other'].map((reason) => (
                   <button
@@ -892,7 +889,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                   </button>
                 ))}
               </div>
-              
+
               <button
                 onClick={() => setShowReportModal(false)}
                 className="w-full mt-6 py-3 text-gray-600 hover:text-gray-800 transition-colors"
@@ -918,7 +915,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
           >
             <MessageCircle className="w-6 h-6" />
           </button>
-          
+
           {/* Pulse animation */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 animate-ping opacity-20"></div>
         </div>

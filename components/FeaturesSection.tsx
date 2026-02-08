@@ -9,19 +9,19 @@ export default function FeaturesSection() {
       icon: Brain,
       title: 'Smart Matching',
       description: 'Our AI algorithm analyzes 200+ compatibility factors to find your perfect match with 99% accuracy.',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-teal-500 to-cyan-500',
     },
     {
       icon: Shield,
       title: 'Verified Profiles',
-      description: 'Every profile is manually verified with government ID, ensuring authentic and genuine connections.',
-      color: 'from-green-500 to-emerald-500',
+      description: 'Every profile is manually verified with CNIC/Government ID, ensuring authentic and genuine connections.',
+      color: 'from-emerald-500 to-teal-500',
     },
     {
       icon: Crown,
       title: 'Premium Service',
       description: 'Dedicated relationship managers, priority matching, and exclusive events for premium members.',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-cyan-500 to-emerald-500',
     },
   ]
 
@@ -53,7 +53,7 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
                 rotateY: 5,
                 scale: 1.02
@@ -64,7 +64,7 @@ export default function FeaturesSection() {
               <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover-glow">
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                
+
                 {/* Floating Animation */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
@@ -77,7 +77,7 @@ export default function FeaturesSection() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-teal-600 transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-6">
@@ -87,7 +87,7 @@ export default function FeaturesSection() {
                   {/* Learn More Link */}
                   <motion.div
                     whileHover={{ x: 5 }}
-                    className="inline-flex items-center text-primary-600 font-semibold group-hover:text-primary-700 transition-colors duration-300"
+                    className="inline-flex items-center text-teal-600 font-semibold group-hover:text-teal-700 transition-colors duration-300"
                   >
                     <span>Learn More</span>
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -95,8 +95,8 @@ export default function FeaturesSection() {
                 </motion.div>
 
                 {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-primary-100 to-purple-100 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700" />
-                <div className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-purple-100 to-primary-100 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700 delay-100" />
+                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-teal-100 to-emerald-100 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700" />
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700 delay-100" />
               </div>
 
               {/* Flip Effect Overlay */}
@@ -104,7 +104,7 @@ export default function FeaturesSection() {
                 initial={{ rotateY: -90, opacity: 0 }}
                 whileHover={{ rotateY: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-500 rounded-2xl p-8 flex items-center justify-center text-white text-center"
+                className="absolute inset-0 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-2xl p-8 flex items-center justify-center text-white text-center"
                 style={{ backfaceVisibility: 'hidden' }}
               >
                 <div>
@@ -128,7 +128,7 @@ export default function FeaturesSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-purple-500 text-white font-bold text-lg px-8 py-4 rounded-full hover:from-primary-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center space-x-2 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold text-lg px-8 py-4 rounded-full hover:from-teal-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <span>Explore All Features</span>
             <ArrowRight className="h-5 w-5" />

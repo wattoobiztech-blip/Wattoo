@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from '@/components/ui/Motion'
 
 interface RangeSliderProps {
@@ -12,6 +12,9 @@ interface RangeSliderProps {
   onChange: (value: [number, number]) => void
   formatValue?: (value: number) => string
   error?: string
+  className?: string
+  labelClassName?: string
+  valueClassName?: string
 }
 
 export default function RangeSlider({
@@ -22,45 +25,79 @@ export default function RangeSlider({
   value,
   onChange,
   formatValue = (val) => val.toString(),
-  error
+  error,
+  className,
+  labelClassName = "text-gray-700",
+  valueClassName = "text-gray-900"
 }: RangeSliderProps) {
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null)
+  const sliderRef = useRef<HTMLDivElement>(null)
 
-  const handleMinChange = (newMin: number) => {
-    const clampedMin = Math.max(min, Math.min(newMin, value[1] - step))
-    onChange([clampedMin, value[1]])
-  }
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging || !sliderRef.current) return
 
-  const handleMaxChange = (newMax: number) => {
-    const clampedMax = Math.min(max, Math.max(newMax, value[0] + step))
-    onChange([value[0], clampedMax])
-  }
+      const sliderRect = sliderRef.current.getBoundingClientRect()
+      const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX
+      const percentage = Math.min(100, Math.max(0, ((clientX - sliderRect.left) / sliderRect.width) * 100))
+      const newValue = ((percentage / 100) * (max - min)) + min
+
+      if (isDragging === 'min') {
+        const clampedMin = Math.min(Math.max(min, newValue), value[1] - step)
+        onChange([Math.round(clampedMin / step) * step, value[1]])
+      } else {
+        const clampedMax = Math.max(Math.min(max, newValue), value[0] + step)
+        onChange([value[0], Math.round(clampedMax / step) * step])
+      }
+    }
+
+    const handleMouseUp = () => {
+      setIsDragging(null)
+    }
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove)
+      window.addEventListener('touchmove', handleMouseMove)
+      window.addEventListener('mouseup', handleMouseUp)
+      window.addEventListener('touchend', handleMouseUp)
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('touchmove', handleMouseMove)
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('touchend', handleMouseUp)
+    }
+  }, [isDragging, min, max, step, value, onChange])
 
   const getPercentage = (val: number) => ((val - min) / (max - min)) * 100
 
   return (
-    <div className="space-y-4">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-      
+    <div className={`space-y-4 ${className || ''}`}>
+      <label className={`block text-sm font-medium ${labelClassName}`}>{label}</label>
+
       <div className="px-3">
         {/* Value Display */}
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-gray-900">
+          <span className={`text-sm font-medium ${valueClassName}`}>
             {formatValue(value[0])}
           </span>
           <span className="text-sm text-gray-500">to</span>
-          <span className="text-sm font-medium text-gray-900">
+          <span className={`text-sm font-medium ${valueClassName}`}>
             {formatValue(value[1])}
           </span>
         </div>
 
         {/* Slider Container */}
-        <div className="relative h-6 flex items-center">
+        <div
+          ref={sliderRef}
+          className="relative h-6 flex items-center cursor-pointer touch-none"
+        >
           {/* Track */}
           <div className="absolute w-full h-2 bg-gray-200 rounded-full">
             {/* Active Range */}
             <div
-              className="absolute h-2 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full"
+              className="absolute h-2 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full"
               style={{
                 left: `${getPercentage(value[0])}%`,
                 width: `${getPercentage(value[1]) - getPercentage(value[0])}%`
@@ -70,47 +107,24 @@ export default function RangeSlider({
 
           {/* Min Thumb */}
           <motion.div
-            className={`absolute w-6 h-6 bg-white border-2 border-primary-500 rounded-full cursor-pointer shadow-lg ${
-              isDragging === 'min' ? 'scale-110' : ''
-            }`}
+            className={`absolute w-6 h-6 bg-white border-2 border-teal-500 rounded-full cursor-pointer shadow-lg z-10 ${isDragging === 'min' ? 'scale-110 z-20' : ''
+              }`}
             style={{ left: `calc(${getPercentage(value[0])}% - 12px)` }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.2 }}
-            onMouseDown={() => setIsDragging('min')}
+            onMouseDown={(e: any) => { e.preventDefault(); setIsDragging('min'); }}
+            onTouchStart={() => setIsDragging('min')}
           />
 
           {/* Max Thumb */}
           <motion.div
-            className={`absolute w-6 h-6 bg-white border-2 border-primary-500 rounded-full cursor-pointer shadow-lg ${
-              isDragging === 'max' ? 'scale-110' : ''
-            }`}
+            className={`absolute w-6 h-6 bg-white border-2 border-teal-500 rounded-full cursor-pointer shadow-lg z-10 ${isDragging === 'max' ? 'scale-110 z-20' : ''
+              }`}
             style={{ left: `calc(${getPercentage(value[1])}% - 12px)` }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.2 }}
-            onMouseDown={() => setIsDragging('max')}
-          />
-
-          {/* Hidden Range Inputs */}
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={value[0]}
-            onChange={(e) => handleMinChange(Number(e.target.value))}
-            className="absolute w-full h-full opacity-0 cursor-pointer"
-            style={{ zIndex: isDragging === 'min' ? 3 : 1 }}
-          />
-          
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={value[1]}
-            onChange={(e) => handleMaxChange(Number(e.target.value))}
-            className="absolute w-full h-full opacity-0 cursor-pointer"
-            style={{ zIndex: isDragging === 'max' ? 3 : 1 }}
+            onMouseDown={(e: any) => { e.preventDefault(); setIsDragging('max'); }}
+            onTouchStart={() => setIsDragging('max')}
           />
         </div>
 

@@ -8,9 +8,9 @@ import { ArrowLeft, ArrowRight, Heart } from 'lucide-react'
 import Link from 'next/link'
 import { toast } from 'react-hot-toast'
 
-import { 
-  registrationStep1Schema, 
-  registrationStep2Schema, 
+import {
+  registrationStep1Schema,
+  registrationStep2Schema,
   registrationStep3Schema,
   type RegistrationStep1Data,
   type RegistrationStep2Data,
@@ -46,19 +46,19 @@ export default function RegisterPage() {
 
   const handleStep3Submit = async (data: RegistrationStep3Data) => {
     setIsLoading(true)
-    
+
     const completeData = {
       ...formData.step1,
       ...formData.step2,
       ...data
     }
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000))
-    
+
     console.log('Complete Registration Data:', completeData)
     toast.success('Registration successful! Welcome to Rishta.com')
-    
+
     setIsLoading(false)
   }
 
@@ -71,7 +71,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
       <CustomCursor />
-      
+
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 30 }).map((_, i) => (
@@ -119,14 +119,15 @@ export default function RegisterPage() {
         </div>
 
         {/* Progress Bar */}
-        <ProgressBar 
-          currentStep={currentStep} 
-          totalSteps={3} 
+        <ProgressBar
+          currentStep={currentStep}
+          totalSteps={3}
           stepLabels={stepLabels}
         />
 
         {/* Form Container */}
         <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+          {/* @ts-ignore */}
           <AnimatePresence mode="wait">
             {currentStep === 1 && (
               <RegistrationStep1
@@ -135,7 +136,7 @@ export default function RegisterPage() {
                 defaultValues={formData.step1}
               />
             )}
-            
+
             {currentStep === 2 && (
               <RegistrationStep2
                 key="step2"
@@ -144,7 +145,7 @@ export default function RegisterPage() {
                 defaultValues={formData.step2}
               />
             )}
-            
+
             {currentStep === 3 && (
               <RegistrationStep3
                 key="step3"
@@ -160,8 +161,8 @@ export default function RegisterPage() {
         {/* Login Link */}
         <div className="text-center mt-8">
           <span className="text-gray-400">Already have an account? </span>
-          <Link 
-            href="/login" 
+          <Link
+            href="/login"
             className="text-primary-400 hover:text-primary-300 font-semibold transition-colors duration-200"
           >
             Sign In

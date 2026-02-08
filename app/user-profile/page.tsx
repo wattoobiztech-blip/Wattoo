@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
-import { 
-  User, Edit3, Camera, MapPin, Briefcase, GraduationCap, 
+import {
+  User, Edit3, Camera, MapPin, Briefcase, GraduationCap,
   Calendar, Heart, Eye, Star, Settings, Share2, Download,
   Phone, Mail, Instagram, Facebook, Linkedin, Award,
   Users, Coffee, Target, Image as ImageIcon, Plus,
@@ -48,7 +48,7 @@ const getUserProfile = () => ({
   responseRate: '98%',
   responseTime: 'Within 1 hour',
   about: 'Creative and passionate graphic designer who loves art, travel, and meaningful conversations. Looking for someone who appreciates creativity and shares similar values.',
-  
+
   familyInfo: {
     fatherOccupation: 'Engineer',
     motherOccupation: 'Teacher',
@@ -57,7 +57,7 @@ const getUserProfile = () => ({
     familyValues: 'Modern with traditional values',
     familyIncome: '₹12-18 Lakhs'
   },
-  
+
   lifestyle: {
     diet: 'Vegetarian',
     drinking: 'Never',
@@ -65,12 +65,12 @@ const getUserProfile = () => ({
     exercise: 'Regular',
     pets: 'Love cats'
   },
-  
+
   interests: [
-    'Art & Design', 'Photography', 'Traveling', 'Reading', 
+    'Art & Design', 'Photography', 'Traveling', 'Reading',
     'Music', 'Cooking', 'Yoga', 'Movies'
   ],
-  
+
   preferences: {
     ageRange: '25-30',
     heightRange: '5\'6" - 6\'0"',
@@ -79,19 +79,19 @@ const getUserProfile = () => ({
     location: 'Pakistan',
     maritalStatus: 'Never Married'
   },
-  
+
   socialMedia: {
     instagram: '@sarah_designs',
     facebook: 'sarah.ahmed.designer',
     linkedin: 'sarah-ahmed-designer'
   },
-  
+
   achievements: [
     'Best Designer Award 2023',
     'Featured in Design Magazine',
     'Freelance Success Story'
   ],
-  
+
   profileCompletion: 95,
   accountStatus: 'active',
   membershipType: 'premium',
@@ -124,7 +124,7 @@ export default function UserProfilePage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30">
       {/* Main Header */}
       <Header />
-      
+
       {/* Page Header */}
       <div className="bg-white/80 backdrop-blur-xl border-b border-white/50 mt-[70px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,7 +133,7 @@ export default function UserProfilePage() {
               <User className="w-5 h-5 text-purple-600" />
               <span className="font-medium text-gray-900">My Profile</span>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-full transition-all">
                 <Share2 className="w-5 h-5" />
@@ -155,10 +155,10 @@ export default function UserProfilePage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          
+
           {/* Left Sidebar - Profile Summary */}
           <div className="lg:col-span-1 space-y-6">
-            
+
             {/* Profile Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,7 @@ export default function UserProfilePage() {
                     <Camera className="w-4 h-4" />
                   </button>
                 </div>
-                
+
                 {/* Status Badges */}
                 <div className="flex justify-center mt-4 space-x-2">
                   {profile.verified && (
@@ -263,7 +263,7 @@ export default function UserProfilePage() {
 
           {/* Main Content */}
           <div className="lg:col-span-3 space-y-6">
-            
+
             {/* Navigation Tabs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -276,11 +276,10 @@ export default function UserProfilePage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center space-x-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${
-                      activeTab === tab.id
+                    className={`flex items-center space-x-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${activeTab === tab.id
                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
                         : 'text-gray-600 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     <tab.icon className="w-5 h-5" />
                     <span>{tab.label}</span>
@@ -290,6 +289,7 @@ export default function UserProfilePage() {
             </motion.div>
 
             {/* Tab Content */}
+            {/* @ts-ignore */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -328,7 +328,7 @@ export default function UserProfilePage() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 mb-4">Professional Info</h4>
                         <div className="space-y-3">
@@ -380,7 +380,7 @@ export default function UserProfilePage() {
                         <span>Add Photo</span>
                       </button>
                     </div>
-                    
+
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {profile.images.map((image, index) => (
                         <motion.div
@@ -408,7 +408,7 @@ export default function UserProfilePage() {
                           </div>
                         </motion.div>
                       ))}
-                      
+
                       {/* Add Photo Placeholder */}
                       <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -429,7 +429,7 @@ export default function UserProfilePage() {
                 {activeTab === 'details' && (
                   <div className="space-y-8">
                     <h3 className="text-2xl font-bold text-gray-900">Detailed Information</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 mb-4">Family Information</h4>
@@ -442,7 +442,7 @@ export default function UserProfilePage() {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 mb-4">Lifestyle</h4>
                         <div className="space-y-3">
@@ -487,7 +487,7 @@ export default function UserProfilePage() {
                 {activeTab === 'preferences' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Partner Preferences</h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div className="space-y-4">
                         {Object.entries(profile.preferences).slice(0, 3).map(([key, value]) => (
@@ -512,7 +512,7 @@ export default function UserProfilePage() {
                 {activeTab === 'privacy' && (
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-gray-900">Privacy Settings</h3>
-                    
+
                     <div className="space-y-6">
                       <div className="p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
                         <div className="flex items-center space-x-3 mb-4">

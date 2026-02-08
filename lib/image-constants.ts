@@ -9,14 +9,14 @@ export const HERO_IMAGES = {
 
 export const PROFILE_IMAGES = {
   // Female profiles
-  ayesha: '/images/profiles/ayesha-khan.svg',
-  fatima: '/images/profiles/fatima-sheikh.svg',
-  zara: '/images/profiles/zara-butt.svg',
+  ayesha: '/images/profiles/ayesha-khan.jpg',
+  fatima: '/images/profiles/fatima-sheikh.jpg',
+  zara: '/images/profiles/zara-butt.jpg',
   
   // Male profiles  
-  ahmed: '/images/profiles/ahmed-ali.svg',
-  hassan: '/images/profiles/hassan-malik.svg',
-  usman: '/images/profiles/usman-chaudhry.svg',
+  ahmed: '/images/profiles/ahmed-ali.jpg',
+  hassan: '/images/profiles/hassan-malik.jpg',
+  usman: '/images/profiles/usman-chaudhry.jpg',
 } as const
 
 export const BACKGROUND_IMAGES = {

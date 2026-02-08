@@ -116,7 +116,7 @@ export default function RegistrationStep1({ onSubmit, defaultValues }: Registrat
                 {watchedValues.gender === gender && (
                   <motion.div
                     layoutId="gender-indicator"
-                    className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-500 rounded-lg opacity-20"
+                    className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-lg opacity-20"
                   />
                 )}
               </label>

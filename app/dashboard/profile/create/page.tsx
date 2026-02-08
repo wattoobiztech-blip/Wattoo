@@ -27,7 +27,7 @@ export default function CreateProfilePage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState<Date | null>(null)
-  
+
   const [formData, setFormData] = useState<{
     personalInfo?: PersonalInfoData
     religiousBackground?: ReligiousBackgroundData
@@ -51,11 +51,11 @@ export default function CreateProfilePage() {
     try {
       await mockApi.saveProfileSection(step, data)
       setLastSaved(new Date())
-      
+
       // Update profile completion percentage
       const completionPercentage = Math.round((currentStep / totalSteps) * 100)
       await mockApi.updateProfileCompletion(completionPercentage)
-      
+
     } catch (error) {
       console.error('Auto-save failed:', error)
       toast.error('Failed to save progress')
@@ -109,30 +109,30 @@ export default function CreateProfilePage() {
     setIsLoading(true)
     try {
       setFormData(prev => ({ ...prev, photos: data }))
-      
+
       // Upload photos if any
       if (data.profilePicture || (data.additionalPhotos && data.additionalPhotos.length > 0)) {
         const filesToUpload = []
         if (data.profilePicture) filesToUpload.push(data.profilePicture)
         if (data.additionalPhotos) filesToUpload.push(...data.additionalPhotos)
-        
+
         await mockApi.uploadPhotos(filesToUpload)
       }
-      
+
       // Save complete profile
       const completeProfile = {
         ...formData,
         photos: data
       }
-      
+
       await mockApi.saveProfileSection('complete', completeProfile)
       await mockApi.updateProfileCompletion(100)
-      
+
       toast.success('Profile completed successfully!')
-      
+
       // Redirect to profile preview
       window.location.href = '/dashboard/profile/preview'
-      
+
     } catch (error) {
       console.error('Failed to complete profile:', error)
       toast.error('Failed to complete profile')
@@ -173,9 +173,9 @@ export default function CreateProfilePage() {
 
         {/* Progress Bar */}
         <div className="mb-8">
-          <ProgressBar 
-            currentStep={currentStep} 
-            totalSteps={totalSteps} 
+          <ProgressBar
+            currentStep={currentStep}
+            totalSteps={totalSteps}
             stepLabels={stepLabels}
           />
         </div>
@@ -197,7 +197,7 @@ export default function CreateProfilePage() {
               </>
             ) : null}
           </div>
-          
+
           <div className="text-sm text-gray-500">
             Auto-save enabled
           </div>
@@ -205,6 +205,7 @@ export default function CreateProfilePage() {
 
         {/* Form Container */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+          {/* @ts-ignore */}
           <AnimatePresence mode="wait">
             {currentStep === 1 && (
               <PersonalInfoStep
@@ -214,7 +215,7 @@ export default function CreateProfilePage() {
                 isLoading={isSaving}
               />
             )}
-            
+
             {currentStep === 2 && (
               <ReligiousBackgroundStep
                 key="step2"
@@ -224,7 +225,7 @@ export default function CreateProfilePage() {
                 isLoading={isSaving}
               />
             )}
-            
+
             {currentStep === 3 && (
               <ProfessionalLocationStep
                 key="step3"
@@ -234,7 +235,7 @@ export default function CreateProfilePage() {
                 isLoading={isSaving}
               />
             )}
-            
+
             {currentStep === 4 && (
               <LifestylePreferencesStep
                 key="step4"
@@ -244,7 +245,7 @@ export default function CreateProfilePage() {
                 isLoading={isSaving}
               />
             )}
-            
+
             {currentStep === 5 && (
               <PhotosStep
                 key="step5"

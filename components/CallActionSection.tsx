@@ -5,12 +5,12 @@ import { ArrowRight, Heart, Users, Shield, Star } from 'lucide-react'
 
 export default function CallActionSection() {
   return (
-    <section className="relative py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-white overflow-hidden">
+    <section className="relative py-20 bg-gradient-to-br from-teal-50 via-emerald-50 to-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-20 h-20 bg-purple-500 rounded-full blur-xl"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-pink-500 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-purple-400 rounded-full blur-xl"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-teal-500 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-emerald-500 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-teal-400 rounded-full blur-xl"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6">
@@ -25,7 +25,7 @@ export default function CallActionSection() {
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
               Ready to Find Your
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"> Perfect Match</span>?
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Perfect Match</span>?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Join millions of happy couples who found their soulmate through our AI-powered matchmaking platform
@@ -41,8 +41,8 @@ export default function CallActionSection() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
           >
             {[
-              { icon: Heart, label: 'AI Matching', color: 'text-pink-500' },
-              { icon: Users, label: '10M+ Users', color: 'text-purple-500' },
+              { icon: Heart, label: 'AI Matching', color: 'text-emerald-500' },
+              { icon: Users, label: '10M+ Users', color: 'text-teal-500' },
               { icon: Shield, label: '100% Secure', color: 'text-blue-500' },
               { icon: Star, label: '99% Success', color: 'text-yellow-500' },
             ].map((feature, index) => (
@@ -71,7 +71,7 @@ export default function CallActionSection() {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:from-purple-500 hover:to-pink-500 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:from-teal-500 hover:to-emerald-500 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               <span>Start Your Journey</span>
               <ArrowRight className="w-6 h-6" />
@@ -80,7 +80,7 @@ export default function CallActionSection() {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-3 bg-white text-gray-800 font-bold text-lg px-8 py-4 rounded-full border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center space-x-3 bg-white text-gray-800 font-bold text-lg px-8 py-4 rounded-full border-2 border-gray-200 hover:border-teal-300 hover:bg-teal-50 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <span>View Success Stories</span>
             </motion.button>

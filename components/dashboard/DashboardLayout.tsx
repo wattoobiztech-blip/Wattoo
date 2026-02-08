@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
-import { 
-  Home, User, Heart, Search, MessageCircle, Crown, Settings, 
-  LogOut, Menu, X, Bell, ChevronDown 
+import {
+  Home, User, Heart, Search, MessageCircle, Crown, Settings,
+  LogOut, Menu, X, Bell, ChevronDown
 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -72,25 +72,28 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen transition-colors duration-300">
       <CustomCursor />
-      
+
       {/* Mobile Header */}
-      <div className="lg:hidden bg-white shadow-sm border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+      <div className="lg:hidden glass-header border-b border-white/10 px-4 py-3 flex items-center justify-between">
         <button
           onClick={() => setIsSidebarOpen(true)}
+          aria-label="Open sidebar"
           className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
-          <Menu className="h-6 w-6 text-gray-600" />
+          <Menu className="h-6 w-6 text-white" />
         </button>
-        
+
         <div className="flex items-center space-x-2">
           <Heart className="h-6 w-6 text-primary-500" />
           <span className="text-lg font-bold gradient-text">Rishta.com</span>
         </div>
-        
-        <button className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-          <Bell className="h-6 w-6 text-gray-600" />
+
+        <button
+          aria-label="Notifications"
+          className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
+          <Bell className="h-6 w-6 text-white" />
         </button>
       </div>
 
@@ -98,16 +101,16 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="flex">
         {/* Desktop Sidebar */}
         <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
-          <div className="flex flex-col flex-grow bg-white shadow-lg border-r border-gray-200">
+          <div className="flex flex-col flex-grow glass border-r border-white/10">
             {/* Logo */}
-            <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
+            <div className="flex items-center justify-center h-16 px-4 border-b border-white/10">
               <Heart className="h-8 w-8 text-primary-500" />
               <span className="ml-2 text-xl font-bold gradient-text">Rishta.com</span>
             </div>
 
             {/* User Profile Card */}
             {userProfile && (
-              <div className="p-4 border-b border-gray-200">
+              <div className="p-4 border-b border-white/10">
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <Image
@@ -120,7 +123,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-900 truncate">
+                    <p className="text-sm font-semibold text-white truncate">
                       {userProfile.fullName}
                     </p>
                     <div className="flex items-center mt-1">
@@ -130,14 +133,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Profile Completion */}
                 <div className="mt-3">
-                  <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                  <div className="flex items-center justify-between text-xs text-gray-300 mb-1">
                     <span>Profile Completion</span>
                     <span>{userProfile.profileCompleted}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-white/20 rounded-full h-2">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${userProfile.profileCompleted}%` }}
@@ -154,18 +157,17 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               {navigationItems.map((item) => {
                 const isActive = pathname === item.href
                 const Icon = item.icon
-                
+
                 return (
                   <Link
                     key={item.name}
                     href={item.disabled ? '#' : item.href}
-                    className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg'
-                        : item.disabled
-                        ? 'text-gray-400 cursor-not-allowed'
-                        : 'text-gray-700 hover:bg-gray-100 hover:text-primary-600'
-                    }`}
+                    className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive
+                      ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg'
+                      : item.disabled
+                        ? 'text-gray-500 cursor-not-allowed'
+                        : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                      }`}
                   >
                     <Icon className={`mr-3 h-5 w-5 ${isActive ? 'text-white' : ''}`} />
                     {item.name}
@@ -180,10 +182,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </nav>
 
             {/* Logout Button */}
-            <div className="p-4 border-t border-gray-200">
+            <div className="p-4 border-t border-white/10">
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                className="w-full flex items-center px-3 py-2 text-sm font-medium text-red-400 hover:bg-red-500/10 rounded-lg transition-colors duration-200"
               >
                 <LogOut className="mr-3 h-5 w-5" />
                 Logout
@@ -203,32 +205,33 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
                 onClick={() => setIsSidebarOpen(false)}
               />
-              
+
               <motion.div
                 initial={{ x: -300 }}
                 animate={{ x: 0 }}
                 exit={{ x: -300 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="lg:hidden fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl"
+                className="lg:hidden fixed inset-y-0 left-0 z-50 w-64 glass shadow-xl border-r border-white/10"
               >
                 <div className="flex flex-col h-full">
                   {/* Mobile Header */}
-                  <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+                  <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
                     <div className="flex items-center space-x-2">
                       <Heart className="h-6 w-6 text-primary-500" />
                       <span className="text-lg font-bold gradient-text">Rishta.com</span>
                     </div>
                     <button
                       onClick={() => setIsSidebarOpen(false)}
+                      aria-label="Close sidebar"
                       className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                     >
-                      <X className="h-5 w-5 text-gray-600" />
+                      <X className="h-5 w-5 text-white" />
                     </button>
                   </div>
 
                   {/* Mobile User Profile */}
                   {userProfile && (
-                    <div className="p-4 border-b border-gray-200">
+                    <div className="p-4 border-b border-white/10">
                       <div className="flex items-center space-x-3">
                         <Image
                           src={userProfile.avatar || '/default-avatar.png'}
@@ -238,7 +241,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                           className="rounded-full object-cover"
                         />
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">
+                          <p className="text-sm font-semibold text-white">
                             {userProfile.fullName}
                           </p>
                           <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium text-white ${getSubscriptionBadge(userProfile.subscriptionStatus).color}`}>
@@ -254,19 +257,18 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     {navigationItems.map((item) => {
                       const isActive = pathname === item.href
                       const Icon = item.icon
-                      
+
                       return (
                         <Link
                           key={item.name}
                           href={item.disabled ? '#' : item.href}
                           onClick={() => setIsSidebarOpen(false)}
-                          className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                            isActive
-                              ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white'
-                              : item.disabled
+                          className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${isActive
+                            ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white'
+                            : item.disabled
                               ? 'text-gray-400 cursor-not-allowed'
-                              : 'text-gray-700 hover:bg-gray-100'
-                          }`}
+                              : 'text-gray-300 hover:bg-white/10'
+                            }`}
                         >
                           <Icon className="mr-3 h-5 w-5" />
                           {item.name}
@@ -281,10 +283,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   </nav>
 
                   {/* Mobile Logout */}
-                  <div className="p-4 border-t border-gray-200">
+                  <div className="p-4 border-t border-white/10">
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                      className="w-full flex items-center px-3 py-2 text-sm font-medium text-red-400 hover:bg-red-500/10 rounded-lg transition-colors duration-200"
                     >
                       <LogOut className="mr-3 h-5 w-5" />
                       Logout
