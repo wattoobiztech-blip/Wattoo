@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
 import { useDebounce } from 'use-debounce'
-import { 
-  Filter, Grid, List, Search as SearchIcon, 
+import {
+  Filter, Grid, List, Search as SearchIcon,
   SlidersHorizontal, X, Save, Clock, Star,
   MapPin, Briefcase, GraduationCap, Heart,
   Eye, Bookmark, ChevronLeft, ChevronRight
@@ -33,7 +33,7 @@ export default function SearchPage() {
     maritalStatus: [],
     dietaryPreference: []
   })
-  
+
   const [debouncedFilters] = useDebounce(filters, 500)
   const [searchResults, setSearchResults] = useState<SearchResult | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -50,7 +50,7 @@ export default function SearchPage() {
     try {
       const filtersToUse = newFilters || debouncedFilters
       const results = await searchApi.searchProfiles(filtersToUse, page, 20, sortBy)
-      
+
       if (page === 1) {
         setSearchResults(results)
       } else {
@@ -60,10 +60,10 @@ export default function SearchPage() {
           profiles: [...prev.profiles, ...results.profiles]
         } : results)
       }
-      
+
       // Add to recent searches
       await searchApi.addToRecentSearches(filtersToUse)
-      
+
     } catch (error) {
       console.error('Search failed:', error)
       toast.error('Search failed. Please try again.')
@@ -107,7 +107,7 @@ export default function SearchPage() {
       toast.error('Please enter a name for your search')
       return
     }
-    
+
     try {
       await searchApi.saveSearch(savedSearchName, filters)
       toast.success('Search saved successfully!')
@@ -161,7 +161,7 @@ export default function SearchPage() {
                 className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
                 onClick={() => setShowFilters(false)}
               />
-              
+
               <motion.div
                 initial={{ x: -300 }}
                 animate={{ x: 0 }}
@@ -178,7 +178,7 @@ export default function SearchPage() {
                     <X className="h-5 w-5 text-gray-600" />
                   </button>
                 </div>
-                
+
                 <SearchFilters
                   filters={filters}
                   onFiltersChange={handleFilterChange}
@@ -197,7 +197,7 @@ export default function SearchPage() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-4">
                 <h1 className="text-2xl font-bold text-gray-900">Find Your Match</h1>
-                
+
                 {/* Mobile Filter Button */}
                 <button
                   onClick={() => setShowFilters(true)}
@@ -221,11 +221,10 @@ export default function SearchPage() {
                     <button
                       key={mode.value}
                       onClick={() => setViewMode(mode.value as 'grid' | 'list')}
-                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                        viewMode === mode.value
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${viewMode === mode.value
                           ? 'bg-white text-primary-600 shadow-sm'
                           : 'text-gray-600 hover:text-gray-900'
-                      }`}
+                        }`}
                     >
                       {mode.value === 'grid' ? <Grid className="h-4 w-4" /> : <List className="h-4 w-4" />}
                       <span className="hidden sm:inline">{mode.label}</span>
@@ -254,7 +253,7 @@ export default function SearchPage() {
                 <span>
                   Showing {searchResults.profiles.length} of {searchResults.total} matches
                 </span>
-                
+
                 {/* Active Filters */}
                 {getActiveFilterCount() > 0 && (
                   <div className="flex items-center space-x-2">
@@ -357,11 +356,11 @@ export default function SearchPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
                 className="bg-white rounded-2xl p-6 w-full max-w-md"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Save Search</h3>
-                
+
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -375,7 +374,7 @@ export default function SearchPage() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div className="flex space-x-3">
                     <Button
                       onClick={() => setShowSaveDialog(false)}
