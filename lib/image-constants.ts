@@ -3,20 +3,20 @@
 
 export const HERO_IMAGES = {
   slide1: '/images/hero/couple-1.svg',
-  slide2: '/images/hero/couple-2.svg', 
+  slide2: '/images/hero/couple-2.svg',
   slide3: '/images/hero/couple-3.svg',
 } as const
 
 export const PROFILE_IMAGES = {
   // Female profiles
-  ayesha: '/images/profiles/ayesha-khan.jpg',
-  fatima: '/images/profiles/fatima-sheikh.jpg',
-  zara: '/images/profiles/zara-butt.jpg',
-  
+  ayesha: '/images/profiles/profile_ayesha-khan.jpg',
+  fatima: '/images/profiles/profile_fatima-sheikh.jpg',
+  zara: '/images/profiles/profile_zara-butt.png',
+
   // Male profiles  
-  ahmed: '/images/profiles/ahmed-ali.jpg',
-  hassan: '/images/profiles/hassan-malik.jpg',
-  usman: '/images/profiles/usman-chaudhry.jpg',
+  ahmed: '/images/profiles/profile_ahmed-ali.jpg',
+  hassan: '/images/profiles/profile_hassan-malik.jpg',
+  usman: '/images/profiles/profile_usman-chaudhry.jpg',
 } as const
 
 export const BACKGROUND_IMAGES = {
@@ -54,7 +54,7 @@ export function getImageSrc(localPath: string, fallbackUrl?: string): string {
   if (process.env.NODE_ENV === 'production') {
     return localPath
   }
-  
+
   // In development, use fallback if provided, otherwise use local
   return fallbackUrl || localPath
 }

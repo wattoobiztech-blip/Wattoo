@@ -23,10 +23,10 @@ export default function HeroSection() {
   ]
 
   const testimonials = [
-    { name: 'Ayesha & Ahmed', text: 'Found my perfect match!', image: '/images/profiles/ayesha-khan.jpg' },
-    { name: 'Fatima & Hassan', text: 'Best decision ever!', image: '/images/profiles/fatima-sheikh.jpg' },
-    { name: 'Zara & Usman', text: 'Happily married now!', image: '/images/profiles/zara-butt.jpg' },
-    { name: 'Ali Khan', text: 'Met my soulmate here!', image: '/images/profiles/ahmed-ali.jpg' },
+    { name: 'Ayesha & Ahmed', text: 'Found my perfect match!', image: getImageSrc(PROFILE_IMAGES.ayesha) },
+    { name: 'Fatima & Hassan', text: 'Best decision ever!', image: getImageSrc(PROFILE_IMAGES.fatima) },
+    { name: 'Zara & Usman', text: 'Happily married now!', image: getImageSrc(PROFILE_IMAGES.zara) },
+    { name: 'Ali Khan', text: 'Met my soulmate here!', image: getImageSrc(PROFILE_IMAGES.ahmed) },
   ]
 
   useEffect(() => {
@@ -52,30 +52,30 @@ export default function HeroSection() {
       {/* Multi-Color Animated Background Gradient - Logo Color Scheme */}
       <div className="absolute inset-0 bg-gradient-to-tr from-teal-900/70 via-emerald-800/50 to-green-900/60 animate-gradient-xy opacity-90"></div>
       <div className="absolute inset-0 bg-gradient-to-bl from-cyan-900/40 via-transparent to-teal-800/50 opacity-75"></div>
-      
+
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)] bg-[size:64px_64px] animate-pulse-subtle"></div>
-      
+
       {/* Enhanced Gradient Orbs with Parallax - Teal/Emerald Color Scheme */}
-      <div 
+      <div
         className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-80 animate-blob will-change-transform"
         style={{ transform: `translate(${mousePosition.x * 1.2}px, ${mousePosition.y * 1.2}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-80 animate-blob animation-delay-2000 will-change-transform"
         style={{ transform: `translate(${-mousePosition.x * 1.3}px, ${mousePosition.y * 0.9}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute -bottom-32 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500 to-green-500 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 will-change-transform"
         style={{ transform: `translate(${mousePosition.x * 0.8}px, ${-mousePosition.y * 1.1}px)` }}
       ></div>
-      
+
       {/* Additional Accent Orbs */}
-      <div 
+      <div
         className="absolute top-1/2 -right-48 w-80 h-80 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-blob will-change-transform"
         style={{ transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 1.5}px)` }}
       ></div>
-      <div 
+      <div
         className="absolute -top-40 right-1/3 w-72 h-72 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"
         style={{ transform: `translate(${mousePosition.x * 0.7}px, ${mousePosition.y * 0.8}px)` }}
       ></div>
@@ -105,13 +105,13 @@ export default function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full h-screen flex items-center justify-center px-2 sm:px-4 lg:px-6">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-center w-full max-w-full lg:max-w-7xl">
-          
-          {/* Left Content - Vertically Centered Middle */}
-          <div className="text-center lg:text-left space-y-8 w-full max-w-2xl">
+      <div className="relative z-10 w-full min-h-screen flex items-start lg:items-center justify-center px-4 pt-36 pb-20 lg:py-0">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full max-w-7xl">
+
+          {/* Left Content */}
+          <div className="text-center lg:text-left space-y-6 sm:space-y-8 w-full max-w-2xl order-last lg:order-first">
             {/* Badge - Modern Design */}
-            <div className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 backdrop-blur-lg border border-teal-400/40 text-white text-xs sm:text-sm font-semibold hover:from-teal-500/30 hover:to-emerald-500/30 transition-all duration-300 group">
+            <div className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-teal-500/20 to-emerald-500/20 backdrop-blur-lg border border-teal-400/40 text-white text-[10px] sm:text-xs font-semibold hover:from-teal-500/30 hover:to-emerald-500/30 transition-all duration-300 group">
               <Sparkles className="w-4 h-4 text-yellow-300 flex-shrink-0 group-hover:animate-spin" />
               <span className="bg-gradient-to-r from-white to-emerald-100 bg-clip-text text-transparent">Pakistan's Most Trusted Platform</span>
               <div className="flex items-center gap-1.5 ml-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-green-500/30 to-emerald-500/20 text-green-300 text-xs font-bold border border-green-400/30">
@@ -121,10 +121,10 @@ export default function HeroSection() {
             </div>
 
             {/* Main Heading with Gradient - Compact */}
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tighter">
+            <div className="space-y-2 sm:space-y-4">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] tracking-tighter">
                 <span className="block bg-gradient-to-r from-white via-emerald-200 to-teal-300 text-transparent bg-clip-text drop-shadow-2xl">Find Your</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 animate-gradient-x drop-shadow-2xl leading-none mt-2">Perfect Match</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 animate-gradient-x drop-shadow-2xl leading-none mt-1 sm:mt-2">Perfect Match</span>
               </h1>
             </div>
 
@@ -153,7 +153,7 @@ export default function HeroSection() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="group relative text-center p-5 rounded-2xl bg-gradient-to-br from-white/15 to-teal-500/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/30 hover:from-white/25 hover:to-teal-500/20"
+                  className="group relative text-center p-3 sm:p-5 rounded-2xl bg-gradient-to-br from-white/15 to-teal-500/10 backdrop-blur-lg border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer hover:shadow-2xl hover:shadow-teal-500/30 hover:from-white/25 hover:to-teal-500/20"
                 >
                   <div className="absolute -top-0.5 -right-0.5 w-1 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <stat.icon className="w-6 h-6 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
@@ -164,8 +164,8 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Content - Profile Stack - End Position */}
-          <div className="relative w-full max-w-md h-screen flex items-center justify-end -mx-4 lg:mx-0 lg:ml-auto">
+          {/* Right Content - Profile Stack */}
+          <div className="relative w-full max-w-lg mx-auto lg:ml-auto order-first lg:order-last mb-12 lg:mb-0">
             {/* Main Card Container */}
             <div className="relative w-full h-fit">
               {/* Floating Active Users - Top Left */}
@@ -183,23 +183,22 @@ export default function HeroSection() {
 
               {/* Profile Cards Stack */}
               <div className="relative w-full flex items-center justify-center">
-                <div className="relative w-full max-w-md h-[550px] sm:h-[620px]">
+                <div className="relative w-full max-w-md h-[380px] sm:h-[620px]">
                   {testimonials.map((testimonial, index) => (
                     <div
                       key={index}
-                      className={`absolute left-0 right-0 mx-auto top-0 w-full transition-all duration-700 ${
-                        index === activeIndex
-                          ? 'opacity-100 scale-100 z-10'
-                          : index === (activeIndex + 1) % testimonials.length
+                      className={`absolute left-0 right-0 mx-auto top-0 w-full transition-all duration-700 ${index === activeIndex
+                        ? 'opacity-100 scale-100 z-10'
+                        : index === (activeIndex + 1) % testimonials.length
                           ? 'opacity-70 scale-95 z-5'
                           : 'opacity-40 scale-90 z-0'
-                      }`}
+                        }`}
                       style={{
-                        transform: index === activeIndex 
-                          ? 'rotate(0deg) translateY(0)' 
+                        transform: index === activeIndex
+                          ? 'rotate(0deg) translateY(0)'
                           : index === (activeIndex + 1) % testimonials.length
-                          ? 'rotate(2deg) translateY(15px)'
-                          : 'rotate(4deg) translateY(30px)'
+                            ? 'rotate(2deg) translateY(15px)'
+                            : 'rotate(4deg) translateY(30px)'
                       }}
                     >
                       <div className="bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-2xl border border-white/40 rounded-3xl p-6 shadow-2xl hover:shadow-2xl hover:shadow-teal-500/40 transition-all duration-300">
@@ -213,7 +212,7 @@ export default function HeroSection() {
                             priority
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                          
+
                           {/* Verified Badge */}
                           <div className="absolute top-4 right-4 bg-gradient-to-br from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
                             <CheckCircle className="w-5 h-5 text-white" />
@@ -251,11 +250,10 @@ export default function HeroSection() {
                   <button
                     key={index}
                     onClick={() => setActiveIndex(index)}
-                    className={`rounded-full transition-all duration-300 cursor-pointer hover:scale-125 ${
-                      index === activeIndex
-                        ? 'bg-gradient-to-r from-teal-500 to-emerald-500 w-6 h-2.5'
-                        : 'bg-white/30 hover:bg-white/50 w-2.5 h-2.5'
-                    }`}
+                    className={`rounded-full transition-all duration-300 cursor-pointer hover:scale-125 ${index === activeIndex
+                      ? 'bg-gradient-to-r from-teal-500 to-emerald-500 w-6 h-2.5'
+                      : 'bg-white/30 hover:bg-white/50 w-2.5 h-2.5'
+                      }`}
                   ></button>
                 ))}
               </div>
