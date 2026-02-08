@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
 import {
   Settings as SettingsIcon, User, Bell, Shield, Eye,
@@ -152,8 +152,8 @@ export default function SettingsPage() {
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
                     className={`w-full flex items-center space-x-3 p-3 rounded-xl transition-all ${activeCategory === category.id
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
-                        : 'text-gray-600 hover:bg-gray-50'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                      : 'text-gray-600 hover:bg-gray-50'
                       }`}
                   >
                     <category.icon className="w-5 h-5" />
@@ -690,7 +690,7 @@ export default function SettingsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-2xl p-8 max-w-md w-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
@@ -732,7 +732,7 @@ export default function SettingsPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-2xl p-8 max-w-md w-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">

@@ -25,7 +25,7 @@ export const religiousBackgroundSchema = z.object({
 })
 
 // Step 3: Professional & Location Schema
-export const professionalLocationSchema = z.object({
+export const professionalLocationSchemaBase = z.object({
   jobBusiness: z.enum(['job', 'business']),
   // Job fields
   jobTitle: z.string().optional(),
@@ -41,7 +41,9 @@ export const professionalLocationSchema = z.object({
   annualTurnover: z.number().optional(),
   natureOfBusiness: z.string().optional(),
   numberOfEmployees: z.number().optional(),
-}).refine((data) => {
+})
+
+export const professionalLocationSchema = professionalLocationSchemaBase.refine((data) => {
   if (data.jobBusiness === 'job') {
     return data.jobTitle && data.companyName && data.industry && data.annualIncome
   } else {
@@ -52,7 +54,7 @@ export const professionalLocationSchema = z.object({
 })
 
 // Step 4: Lifestyle & Preferences Schema
-export const lifestylePreferencesSchema = z.object({
+export const lifestylePreferencesSchemaBase = z.object({
   // About You
   education: z.string().min(1, 'Education is required'),
   occupationDetails: z.string().max(500, 'Occupation details must be less than 500 characters'),
@@ -60,7 +62,7 @@ export const lifestylePreferencesSchema = z.object({
   hobbiesInterests: z.array(z.string()).min(1, 'Select at least one hobby or interest'),
   aboutYourself: z.string().min(50, 'About yourself must be at least 50 characters').max(500, 'About yourself must be less than 500 characters'),
   lifeGoals: z.string().max(500, 'Life goals must be less than 500 characters'),
-  
+
   // Partner Preferences
   preferredAgeMin: z.number().min(18, 'Minimum age must be at least 18').max(80, 'Maximum age must be less than 80'),
   preferredAgeMax: z.number().min(18, 'Minimum age must be at least 18').max(80, 'Maximum age must be less than 80'),
@@ -73,7 +75,9 @@ export const lifestylePreferencesSchema = z.object({
   preferredIncomeMin: z.number().optional(),
   preferredIncomeMax: z.number().optional(),
   otherPreferences: z.string().max(500, 'Other preferences must be less than 500 characters').optional(),
-}).refine((data) => data.preferredAgeMin <= data.preferredAgeMax, {
+})
+
+export const lifestylePreferencesSchema = lifestylePreferencesSchemaBase.refine((data) => data.preferredAgeMin <= data.preferredAgeMax, {
   message: 'Minimum age must be less than or equal to maximum age',
   path: ['preferredAgeMax'],
 })
@@ -87,8 +91,8 @@ export const photosSchema = z.object({
 // Complete Profile Schema
 export const completeProfileSchema = personalInfoSchema
   .merge(religiousBackgroundSchema)
-  .merge(professionalLocationSchema)
-  .merge(lifestylePreferencesSchema)
+  .merge(professionalLocationSchemaBase)
+  .merge(lifestylePreferencesSchemaBase)
   .merge(photosSchema)
 
 // Type exports

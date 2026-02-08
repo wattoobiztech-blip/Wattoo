@@ -107,6 +107,11 @@ export default function RangeSlider({
 
           {/* Min Thumb */}
           <motion.div
+            role="slider"
+            aria-valuemin={min}
+            aria-valuemax={value[1] - step}
+            aria-valuenow={value[0]}
+            aria-label={`${label} minimum`}
             className={`absolute w-6 h-6 bg-white border-2 border-teal-500 rounded-full cursor-pointer shadow-lg z-10 ${isDragging === 'min' ? 'scale-110 z-20' : ''
               }`}
             style={{ left: `calc(${getPercentage(value[0])}% - 12px)` }}
@@ -118,6 +123,11 @@ export default function RangeSlider({
 
           {/* Max Thumb */}
           <motion.div
+            role="slider"
+            aria-valuemin={value[0] + step}
+            aria-valuemax={max}
+            aria-valuenow={value[1]}
+            aria-label={`${label} maximum`}
             className={`absolute w-6 h-6 bg-white border-2 border-teal-500 rounded-full cursor-pointer shadow-lg z-10 ${isDragging === 'max' ? 'scale-110 z-20' : ''
               }`}
             style={{ left: `calc(${getPercentage(value[1])}% - 12px)` }}

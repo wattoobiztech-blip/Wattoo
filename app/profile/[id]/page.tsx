@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from '@/components/ui/Motion'
 import {
   ArrowLeft, Heart, MessageCircle, Share2, Flag, Star, MapPin,
@@ -272,8 +272,8 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               <button
                 onClick={() => setIsLiked(!isLiked)}
                 className={`w-full flex items-center justify-center space-x-3 py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 ${isLiked
-                    ? 'bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg'
-                    : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-pink-50'
+                  ? 'bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg'
+                  : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-pink-50'
                   }`}
               >
                 <Heart className={`w-6 h-6 ${isLiked ? 'fill-current' : ''}`} />
@@ -292,8 +292,8 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                 <button
                   onClick={() => setIsFollowing(!isFollowing)}
                   className={`flex items-center justify-center space-x-2 py-3 px-4 rounded-xl transition-all ${isFollowing
-                      ? 'bg-green-500 text-white'
-                      : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-green-50'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-white/80 backdrop-blur-xl border border-white/50 text-gray-700 hover:bg-green-50'
                     }`}
                 >
                   <Star className={`w-5 h-5 ${isFollowing ? 'fill-current' : ''}`} />
@@ -442,8 +442,8 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${activeTab === tab.id
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
-                        : 'text-gray-600 hover:bg-gray-50'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                      : 'text-gray-600 hover:bg-gray-50'
                       }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -756,7 +756,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-2xl p-8 max-w-md w-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact {profile.name}</h3>
 
@@ -803,7 +803,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
@@ -827,7 +827,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               {profile.images.length > 1 && (
                 <>
                   <button
-                    onClick={(e) => {
+                    onClick={(e: React.MouseEvent) => {
                       e.stopPropagation()
                       prevImage()
                     }}
@@ -836,7 +836,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
-                    onClick={(e) => {
+                    onClick={(e: React.MouseEvent) => {
                       e.stopPropagation()
                       nextImage()
                     }}
@@ -871,7 +871,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-2xl p-8 max-w-md w-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Report Profile</h3>
 

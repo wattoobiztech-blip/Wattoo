@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from '@/components/ui/Motion'
-import { 
-  Heart, Bookmark, Eye, MapPin, Briefcase, 
+import {
+  Heart, Bookmark, Eye, MapPin, Briefcase,
   GraduationCap, Star, Verified, Crown,
   Calendar, Ruler, Users
 } from 'lucide-react'
@@ -26,7 +26,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
   const handleLike = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    
+
     setIsLoading(true)
     try {
       const result = await searchApi.toggleLike(profile.id)
@@ -42,7 +42,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
   const handleSave = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    
+
     setIsLoading(true)
     try {
       const result = await searchApi.toggleSave(profile.id)
@@ -59,7 +59,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
     const now = new Date()
     const date = new Date(dateString)
     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
-    
+
     if (diffInHours < 1) return 'Active now'
     if (diffInHours < 24) return `Active ${diffInHours}h ago`
     const diffInDays = Math.floor(diffInHours / 24)
@@ -81,12 +81,12 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          
+
           {/* Premium Border */}
           {profile.isPremium && (
             <div className="absolute inset-0 border-2 border-gradient-to-r from-yellow-400 to-yellow-600 rounded-t-2xl" />
           )}
-          
+
           {/* Status Indicators */}
           <div className="absolute top-3 left-3 flex space-x-2">
             {profile.isVerified && (
@@ -125,25 +125,23 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
               whileTap={{ scale: 0.9 }}
               onClick={handleLike}
               disabled={isLoading}
-              className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${
-                isLiked 
-                  ? 'bg-red-500 text-white' 
+              className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${isLiked
+                  ? 'bg-red-500 text-white'
                   : 'bg-white/90 text-gray-700 hover:bg-red-500 hover:text-white'
-              }`}
+                }`}
             >
               <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
             </motion.button>
-            
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleSave}
               disabled={isLoading}
-              className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${
-                isSaved 
-                  ? 'bg-blue-500 text-white' 
+              className={`p-2 rounded-full backdrop-blur-sm transition-colors duration-200 ${isSaved
+                  ? 'bg-blue-500 text-white'
                   : 'bg-white/90 text-gray-700 hover:bg-blue-500 hover:text-white'
-              }`}
+                }`}
             >
               <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-current' : ''}`} />
             </motion.button>
@@ -168,17 +166,17 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
               <span>•</span>
               <span>{profile.maritalStatus}</span>
             </div>
-            
+
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Briefcase className="h-4 w-4" />
               <span className="truncate">{profile.profession}</span>
             </div>
-            
+
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <GraduationCap className="h-4 w-4" />
               <span className="truncate">{profile.education}</span>
             </div>
-            
+
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <MapPin className="h-4 w-4" />
               <span className="truncate">{profile.location}</span>

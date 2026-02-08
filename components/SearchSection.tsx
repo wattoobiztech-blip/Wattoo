@@ -120,12 +120,15 @@ export default function SearchSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Looking For */}
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">I'm looking for</label>
+                        <label htmlFor="gender-select" className="block text-sm font-medium text-gray-300 mb-2">I&apos;m looking for</label>
                         <div className="relative">
                           <select
+                            id="gender-select"
                             value={gender}
                             onChange={(e) => setGender(e.target.value)}
                             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-sm"
+                            title="Select gender preference"
+                            aria-label="Select gender preference"
                           >
                             <option value="" className="text-gray-900">Woman</option>
                             <option value="man" className="text-gray-900">Man</option>
@@ -136,12 +139,15 @@ export default function SearchSection() {
 
                       {/* Religion */}
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Religion</label>
+                        <label htmlFor="religion-select" className="block text-sm font-medium text-gray-300 mb-2">Religion</label>
                         <div className="relative">
                           <select
+                            id="religion-select"
                             value={religion}
                             onChange={(e) => setReligion(e.target.value)}
                             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-sm"
+                            title="Select religion"
+                            aria-label="Select religion"
                           >
                             <option value="" className="text-gray-900">Islam</option>
                             <option value="christianity" className="text-gray-900">Christianity</option>
@@ -154,45 +160,44 @@ export default function SearchSection() {
                       </div>
                     </div>
 
-                    {/* Row 2: Age Range */}
-                    <div>
+                    {/* Age Range Slider */}
+                    <div className="py-2">
                       <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-teal-400" />
                         Age Range
                       </label>
-                      <div className="px-2 pt-1 pb-2">
-                        <RangeSlider
-                          label=""
-                          min={18}
-                          max={60}
-                          value={ageRange}
-                          onChange={setAgeRange}
-                          formatValue={(val) => `${val}`}
-                          className="mt-0"
-                          labelClassName="hidden"
-                          valueClassName="text-white font-medium bg-white/10 px-2 py-0.5 rounded text-xs"
-                        />
-                      </div>
+                      <RangeSlider
+                        label="Age Range"
+                        min={18}
+                        max={70}
+                        value={ageRange}
+                        onChange={setAgeRange}
+                        formatValue={(val) => `${val} yrs`}
+                        className="text-white"
+                        labelClassName="text-gray-300"
+                        valueClassName="text-teal-400"
+                      />
                     </div>
 
                     {/* Row 3: Country & City */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Country */}
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">Country</label>
+                        <label htmlFor="country-select" className="block text-sm font-medium text-gray-300 mb-2">Country</label>
                         <div className="relative">
                           <select
+                            id="country-select"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-sm"
+                            title="Select country"
+                            aria-label="Select country"
                           >
                             <option value="" className="text-gray-900">Pakistan</option>
-                            <option value="saudi_arabia" className="text-gray-900">Saudi Arabia</option>
-                            <option value="uae" className="text-gray-900">UAE</option>
-                            <option value="uk" className="text-gray-900">UK</option>
+                            <option value="uk" className="text-gray-900">United Kingdom</option>
                             <option value="usa" className="text-gray-900">USA</option>
                             <option value="canada" className="text-gray-900">Canada</option>
-                            <option value="australia" className="text-gray-900">Australia</option>
+                            <option value="uae" className="text-gray-900">UAE</option>
                           </select>
                           <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                         </div>
@@ -200,16 +205,19 @@ export default function SearchSection() {
 
                       {/* City */}
                       <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">City</label>
+                        <label htmlFor="city-select" className="block text-sm font-medium text-gray-300 mb-2">City</label>
                         <div className="relative">
                           <select
+                            id="city-select"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none text-sm"
+                            title="Select city"
+                            aria-label="Select city"
                           >
-                            <option value="" className="text-gray-900">Karachi</option>
-                            {cities.map((c) => (
-                              <option key={c} value={c} className="text-gray-900">{c}</option>
+                            <option value="" className="text-gray-900">Select City</option>
+                            {cities.map(c => (
+                              <option key={c} value={c.toLowerCase()} className="text-gray-900">{c}</option>
                             ))}
                           </select>
                           <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />

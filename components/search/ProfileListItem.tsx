@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from '@/components/ui/Motion'
-import { 
-  Heart, Bookmark, Eye, MapPin, Briefcase, 
+import {
+  Heart, Bookmark, Eye, MapPin, Briefcase,
   GraduationCap, Star, Verified, Crown,
   Calendar, Ruler, Users, DollarSign
 } from 'lucide-react'
@@ -27,7 +27,7 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
   const handleLike = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    
+
     setIsLoading(true)
     try {
       const result = await searchApi.toggleLike(profile.id)
@@ -43,7 +43,7 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
   const handleSave = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    
+
     setIsLoading(true)
     try {
       const result = await searchApi.toggleSave(profile.id)
@@ -60,7 +60,7 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
     const now = new Date()
     const date = new Date(dateString)
     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
-    
+
     if (diffInHours < 1) return 'Active now'
     if (diffInHours < 24) return `Active ${diffInHours}h ago`
     const diffInDays = Math.floor(diffInHours / 24)
@@ -87,7 +87,7 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Status Indicators */}
               <div className="absolute -top-2 -right-2 flex space-x-1">
                 {profile.isVerified && (
@@ -127,7 +127,7 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
                       {getTimeAgo(profile.lastActive)}
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <MapPin className="h-4 w-4" />
                     <span>{profile.location}</span>
@@ -141,25 +141,23 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
                     whileTap={{ scale: 0.95 }}
                     onClick={handleLike}
                     disabled={isLoading}
-                    className={`p-2 rounded-lg transition-colors duration-200 ${
-                      isLiked 
-                        ? 'bg-red-500 text-white' 
+                    className={`p-2 rounded-lg transition-colors duration-200 ${isLiked
+                        ? 'bg-red-500 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-red-500 hover:text-white'
-                    }`}
+                      }`}
                   >
                     <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
                   </motion.button>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleSave}
                     disabled={isLoading}
-                    className={`p-2 rounded-lg transition-colors duration-200 ${
-                      isSaved 
-                        ? 'bg-blue-500 text-white' 
+                    className={`p-2 rounded-lg transition-colors duration-200 ${isSaved
+                        ? 'bg-blue-500 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-blue-500 hover:text-white'
-                    }`}
+                      }`}
                   >
                     <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-current' : ''}`} />
                   </motion.button>
@@ -174,13 +172,13 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
                     <span className="text-gray-600">Height:</span>
                     <span className="font-medium text-gray-900">{profile.height}</span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 text-sm">
                     <Users className="h-4 w-4 text-gray-400" />
                     <span className="text-gray-600">Religion:</span>
                     <span className="font-medium text-gray-900">{profile.religion}</span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 text-sm">
                     <Heart className="h-4 w-4 text-gray-400" />
                     <span className="text-gray-600">Status:</span>
@@ -194,13 +192,13 @@ export default function ProfileListItem({ profile }: ProfileListItemProps) {
                     <span className="text-gray-600">Education:</span>
                     <span className="font-medium text-gray-900 truncate">{profile.education}</span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 text-sm">
                     <Briefcase className="h-4 w-4 text-gray-400" />
                     <span className="text-gray-600">Profession:</span>
                     <span className="font-medium text-gray-900 truncate">{profile.profession}</span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 text-sm">
                     <DollarSign className="h-4 w-4 text-gray-400" />
                     <span className="text-gray-600">Income:</span>

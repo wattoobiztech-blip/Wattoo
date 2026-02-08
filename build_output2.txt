@@ -1,0 +1,63 @@
+﻿
+> rishta-matrimonial@0.1.0 build
+> next build
+
+   ظû▓ Next.js 14.0.0
+   - Environments: .env.local, .env.production
+
+   Creating an optimized production build ...
+ ظ£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to compile.
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE $NPM_CLI_JS 
+$args
++   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Failed   
+  to compile.:String) [],    
+ RemoteException
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+
+./app/subscription/page.tsx:3
+80:25
+Type error: Parameter 'e' 
+implicitly has an 'any' type.
+
+[0m [90m 378 |[39m        
+       exit[33m=[39m{{ 
+scale[33m:[39m 
+[35m0.9[39m[33m,[39m 
+opacity[33m:[39m 
+[35m0[39m }}[0m
+[0m [90m 379 |[39m        
+       className[33m=[39m[
+32m"bg-white rounded-3xl p-8 
+max-w-md w-full max-h-[90vh] 
+overflow-y-auto"[39m[0m
+[0m[31m[1m>[22m[39m[90m
+ 380 |[39m               
+onClick[33m=[39m{(e) 
+[33m=>[39m e[33m.[39mstop
+Propagation()}[0m
+[0m [90m     |[39m        
+                 
+[31m[1m^[22m[39m[0m
+[0m [90m 381 |[39m        
+     [33m>[39m[0m
+[0m [90m 382 |[39m        
+       
+[33m<[39m[33mh3[39m class
+Name[33m=[39m[32m"text-2xl
+ font-bold text-gray-900 mb-6
+"[39m[33m>[39m[33mComplet
+e[39m [33mYour[39m [33mPu
+rchase[39m[33m<[39m[33m/
+[39m[33mh3[39m[33m>[39m[
+0m
+[0m [90m 383 |[39m[0m

@@ -32,192 +32,192 @@ export const useAnimationFrame = (callback: (time: number, delta: number) => voi
 
 
 export const motion = {
-  div: React.forwardRef<HTMLDivElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  div: React.forwardRef<HTMLDivElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <div ref={ref} className={className} style={style} {...props}>
       {children}
     </div>
   )),
 
-  button: React.forwardRef<HTMLButtonElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  button: React.forwardRef<HTMLButtonElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <button ref={ref} className={className} style={style} {...props}>
       {children}
     </button>
   )),
 
-  span: React.forwardRef<HTMLSpanElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  span: React.forwardRef<HTMLSpanElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <span ref={ref} className={className} style={style} {...props}>
       {children}
     </span>
   )),
 
-  label: React.forwardRef<HTMLLabelElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  label: React.forwardRef<HTMLLabelElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <label ref={ref} className={className} style={style} {...props}>
       {children}
     </label>
   )),
 
-  p: React.forwardRef<HTMLParagraphElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  p: React.forwardRef<HTMLParagraphElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <p ref={ref} className={className} style={style} {...props}>
       {children}
     </p>
   )),
 
-  tr: React.forwardRef<HTMLTableRowElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  tr: React.forwardRef<HTMLTableRowElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <tr ref={ref} className={className} style={style} {...props}>
       {children}
     </tr>
   )),
 
-  td: React.forwardRef<HTMLTableCellElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  td: React.forwardRef<HTMLTableCellElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <td ref={ref} className={className} style={style} {...props}>
       {children}
     </td>
   )),
 
-  th: React.forwardRef<HTMLTableHeaderCellElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  th: React.forwardRef<HTMLTableHeaderCellElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <th ref={ref} className={className} style={style} {...props}>
       {children}
     </th>
   )),
 
-  table: React.forwardRef<HTMLTableElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  table: React.forwardRef<HTMLTableElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <table ref={ref} className={className} style={style} {...props}>
       {children}
     </table>
   )),
 
-  tbody: React.forwardRef<HTMLTableSectionElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  tbody: React.forwardRef<HTMLTableSectionElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <tbody ref={ref} className={className} style={style} {...props}>
       {children}
     </tbody>
   )),
 
-  thead: React.forwardRef<HTMLTableSectionElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  thead: React.forwardRef<HTMLTableSectionElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <thead ref={ref} className={className} style={style} {...props}>
       {children}
     </thead>
   )),
 
-  ul: React.forwardRef<HTMLUListElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  ul: React.forwardRef<HTMLUListElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <ul ref={ref} className={className} style={style} {...props}>
       {children}
     </ul>
   )),
 
-  li: React.forwardRef<HTMLLIElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  li: React.forwardRef<HTMLLIElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <li ref={ref} className={className} style={style} {...props}>
       {children}
     </li>
   )),
 
-  form: React.forwardRef<HTMLFormElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  form: React.forwardRef<HTMLFormElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <form ref={ref} className={className} style={style} {...props}>
       {children}
     </form>
   )),
 
-  input: React.forwardRef<HTMLInputElement, any>(({ className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  input: React.forwardRef<HTMLInputElement, any>(({ className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <input ref={ref} className={className} style={style} {...props} />
   )),
 
-  textarea: React.forwardRef<HTMLTextAreaElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  textarea: React.forwardRef<HTMLTextAreaElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <textarea ref={ref} className={className} style={style} {...props}>
       {children}
     </textarea>
   )),
 
-  select: React.forwardRef<HTMLSelectElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  select: React.forwardRef<HTMLSelectElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <select ref={ref} className={className} style={style} {...props}>
       {children}
     </select>
   )),
 
-  img: React.forwardRef<HTMLImageElement, any>(({ className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  img: React.forwardRef<HTMLImageElement, any>(({ className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <img ref={ref} className={className} style={style} {...props} />
   )),
 
-  a: React.forwardRef<HTMLAnchorElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  a: React.forwardRef<HTMLAnchorElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <a ref={ref} className={className} style={style} {...props}>
       {children}
     </a>
   )),
 
-  h1: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  h1: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <h1 ref={ref} className={className} style={style} {...props}>
       {children}
     </h1>
   )),
 
-  h2: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  h2: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <h2 ref={ref} className={className} style={style} {...props}>
       {children}
     </h2>
   )),
 
-  h3: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  h3: React.forwardRef<HTMLHeadingElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <h3 ref={ref} className={className} style={style} {...props}>
       {children}
     </h3>
   )),
 
-  section: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  section: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <section ref={ref} className={className} style={style} {...props}>
       {children}
     </section>
   )),
 
-  article: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  article: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <article ref={ref} className={className} style={style} {...props}>
       {children}
     </article>
   )),
 
-  nav: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  nav: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <nav ref={ref} className={className} style={style} {...props}>
       {children}
     </nav>
   )),
 
-  header: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  header: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <header ref={ref} className={className} style={style} {...props}>
       {children}
     </header>
   )),
 
-  footer: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  footer: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <footer ref={ref} className={className} style={style} {...props}>
       {children}
     </footer>
   )),
 
-  main: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, ...props }, ref) => (
+  main: React.forwardRef<HTMLElement, any>(({ children, className, style, initial, animate, transition, whileHover, whileTap, viewport, variants, exit, ...props }, ref) => (
     // eslint-disable-next-line react-forbid-dom-props
     <main ref={ref} className={className} style={style} {...props}>
       {children}

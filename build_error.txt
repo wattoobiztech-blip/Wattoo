@@ -1,0 +1,144 @@
+﻿
+> rishta-matrimonial@0.1.0 build
+> next build
+
+   ظû▓ Next.js 14.0.0
+   - Environments: .env.local, .env.production
+
+   Creating an optimized production build ...
+ ظ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/26) ...
+node.exe :  ظأب Entire page /
+dashboard/subscriptions/check
+out deopted into client-side 
+rendering. https://nextjs.org
+/docs/messages/deopted-into-c
+lient-rendering /dashboard/su
+bscriptions/checkout
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE $NPM_CLI_JS 
+$args
++   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: ( ظأب En  
+  tire pag...ptions/checko   
+ ut:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+Error: Element type is 
+invalid: expected a string 
+(for built-in components) or 
+a class/function (for 
+composite components) but 
+got: number.
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:51980)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:54802)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:49214)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:54802)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nE (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:56859)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:55048)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:49214)
+
+Error occurred prerendering 
+page "/subscription". Read 
+more: https://nextjs.org/docs
+/messages/prerender-error
+Error: Element type is 
+invalid: expected a string 
+(for built-in components) or 
+a class/function (for 
+composite components) but 
+got: number.
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:51980)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:54802)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:49214)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:54802)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nE (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:56859)
+    at nC (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:55048)
+    at nR (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:57452)
+    at nk (C:\xampp\htdocs\ri
+shta\node_modules\next\dist\c
+ompiled\next-server\app-page.
+runtime.prod.js:28:49214)
+
+   Generating static pages (6/26) 
+
+   Generating static pages (12/26) 
+
+   Generating static pages (19/26) 
+
+ ظ£ô Generating static pages (26/26) 
+
+> Export encountered errors 
+on following paths:
+	/subscription/page: 
+/subscription
